@@ -54,7 +54,7 @@ MyRideHub offers both rental car services and ride-hailing options, giving users
 
 ## Developers
 
-- **Lead Developer:** [Your Name]
-- **Backend Team:** [Names]
-- **Frontend Team:** [Names]
-- **UX/UI Designers:** [Names]
+- **Lead Developer:** Baruc, Cabaña, Tumungha
+- **Backend Team:** Cabaña
+- **Frontend Team:** Baruc, Tumungha
+- **UX/UI Designers:** Baruc, Cabaña, Tumungha
