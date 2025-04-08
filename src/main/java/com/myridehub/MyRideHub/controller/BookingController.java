@@ -56,9 +56,22 @@ public class BookingController {
     @PostMapping
     public ResponseEntity<?> createBooking(@RequestBody Booking booking) {
         try {
-            if (booking.getCustomerName() == null || booking.getVehicle() == null || booking.getVehicle().getId() == null) {
-                return ResponseEntity.badRequest().body("Missing required fields");
+            if (booking.getCustomerName() == null || booking.getCustomerName().trim().isEmpty()) {
+                return ResponseEntity.badRequest().body("Customer name is required.");
             }
+            if (booking.getVehicle() == null || booking.getVehicle().getId() == null) {
+                return ResponseEntity.badRequest().body("Vehicle ID is required.");
+            }
+            if (booking.getContactNumber() == null || booking.getContactNumber().trim().isEmpty()) {
+                return ResponseEntity.badRequest().body("Contact number is required.");
+            }
+            if (booking.getPickupDate() == null || booking.getReturnDate() == null) {
+                return ResponseEntity.badRequest().body("Pickup and return dates are required.");
+            }
+            if (booking.getStatus() == null || booking.getStatus().trim().isEmpty()) {
+                return ResponseEntity.badRequest().body("Status is required.");
+            }
+
             return ResponseEntity.ok(bookingService.createBooking(booking));
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error creating booking: " + e.getMessage());

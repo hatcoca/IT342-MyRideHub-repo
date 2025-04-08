@@ -46,6 +46,7 @@ public class VehicleController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Vehicle> updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle) {
+        // Check if the vehicle exists before updating
         return vehicleService.getVehicleById(id)
                 .map(existingVehicle -> {
                     vehicle.setId(id);
@@ -56,7 +57,12 @@ public class VehicleController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteVehicle(@PathVariable Long id) {
-        vehicleService.deleteVehicle(id);
-        return ResponseEntity.noContent().build();
+        // Check if vehicle exists before attempting delete to avoid exceptions
+        if (vehicleService.getVehicleById(id).isPresent()) {
+            vehicleService.deleteVehicle(id);
+            return ResponseEntity.noContent().build(); // 204 No Content
+        } else {
+            return ResponseEntity.notFound().build(); // 404 Not Found
+        }
     }
 }

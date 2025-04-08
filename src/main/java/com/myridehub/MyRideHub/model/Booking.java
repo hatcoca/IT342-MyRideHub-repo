@@ -20,7 +20,6 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Eager fetching for Vehicle to ensure all fields are populated
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
@@ -45,7 +44,8 @@ public class Booking {
     // Default constructor
     public Booking() {}
 
-    public Booking(Long id, Vehicle vehicle, String customerName, String contactNumber, 
+    // Constructor
+    public Booking(Long id, Vehicle vehicle, String customerName, String contactNumber,
                    LocalDate pickupDate, LocalDate returnDate, double totalPrice, String status) {
         this.id = id;
         this.vehicle = vehicle;
@@ -57,6 +57,7 @@ public class Booking {
         this.status = status;
     }
 
+    // Getters and setters
     public Long getId() {
         return id;
     }

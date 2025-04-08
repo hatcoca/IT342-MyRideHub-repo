@@ -44,12 +44,10 @@ public class Vehicle {
     private boolean available;
 
     @Column(nullable = false)
-    private String category; // "4wheels" or "2wheels"
+    private String category;
 
-    // Default constructor
     public Vehicle() {}
 
-    // Parameterized constructor
     public Vehicle(Long id, String brand, String model, int year, double pricePerDay, String type, 
                    String seats, String engine, String imageUrl, boolean available, String category) {
         this.id = id;
@@ -65,7 +63,6 @@ public class Vehicle {
         this.category = category;
     }
 
-    // Getters and Setters
     @JsonProperty("brand")
     public String getBrand() {
         return brand;
@@ -148,12 +145,10 @@ public class Vehicle {
         this.category = category;
     }
 
-    // Getter for the vehicle ID
     public Long getId() {
         return id;
     }
 
-    // Setter for the vehicle ID (already present)
     public void setId(Long id) {
         this.id = id;
     }
